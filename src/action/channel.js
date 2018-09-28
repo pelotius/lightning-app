@@ -110,7 +110,7 @@ class ChannelAction {
           .fundingTxidStr,
         active: channel.active,
         private: channel.private,
-        status: 'open',
+        status: channel.active ? 'open' : 'inactive',
       }));
     } catch (err) {
       log.error('Listing channels failed', err);

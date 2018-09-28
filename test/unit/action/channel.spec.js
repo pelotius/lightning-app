@@ -97,6 +97,14 @@ describe('Action Channels Unit Tests', () => {
             remoteBalance: 90,
             channelPoint: 'FFFF:1',
           },
+          {
+            chanId: 43,
+            active: false,
+            capacity: 102,
+            localBalance: 11,
+            remoteBalance: 91,
+            channelPoint: 'FFFF:2',
+          },
         ],
       });
       await channel.getChannels();
@@ -104,6 +112,11 @@ describe('Action Channels Unit Tests', () => {
         id: 42,
         fundingTxId: 'FFFF',
         status: 'open',
+      });
+      expect(store.channels[1], 'to satisfy', {
+        id: 43,
+        fundingTxId: 'FFFF',
+        status: 'inactive',
       });
     });
 
