@@ -136,6 +136,33 @@ class AuthAction {
   }
 
   /**
+   * Initialize the next seed view by setting a new seedIndex or, if all seed
+   * words have been displayed, navigating to the mobile seed verify view.
+   * view.
+   * @return {undefined}
+   */
+  initNextSeedPage() {
+    if (this._store.wallet.seedIndex < 16) {
+      this._store.wallet.seedIndex += 8;
+    } else {
+      this.initSetPin();
+    }
+  }
+
+  /**
+   * Initialize the previous seed view by setting a new seedIndex or, if on the
+   * first seed page, navigating to the select seed view.
+   * @return {undefined}
+   */
+  initPrevSeedPage() {
+    if (this._store.wallet.seedIndex >= 8) {
+      this._store.wallet.seedIndex -= 8;
+    } else {
+      this._nav.goSelectSeed();
+    }
+  }
+
+  /**
    * A new wallet password is generated and stored in the keystore
    * during device setup. This password is not intended to be displayed
    * to the user but is unlocked at the application layer via TouchID

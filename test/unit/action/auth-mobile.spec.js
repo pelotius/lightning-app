@@ -184,6 +184,38 @@ describe('Action AuthMobile Unit Tests', () => {
     });
   });
 
+  describe('initPrevSeedPage()', () => {
+    it('should navigate to select seed if seedIndex < 8', () => {
+      store.wallet.seedIndex = 7;
+      auth.initPrevSeedPage();
+      expect(nav.goSelectSeed, 'was called once');
+      expect(store.wallet.seedIndex, 'to equal', 7);
+    });
+
+    it('should decrement seedIndex if greater than 7', async () => {
+      store.wallet.seedIndex = 8;
+      auth.initPrevSeedPage();
+      expect(nav.goSelectSeed, 'was not called');
+      expect(store.wallet.seedIndex, 'to equal', 0);
+    });
+  });
+
+  describe('initNextSeedPage()', () => {
+    it('should navigate to password screen if seedIndex > 16', () => {
+      store.wallet.seedIndex = 16;
+      auth.initNextSeedPage();
+      expect(nav.goSetPassword, 'was called once');
+      expect(store.wallet.seedIndex, 'to equal', 16);
+    });
+
+    it('should increment seedIndex if less than 16', async () => {
+      store.wallet.seedIndex = 8;
+      auth.initNextSeedPage();
+      expect(nav.goSetPassword, 'was not called');
+      expect(store.wallet.seedIndex, 'to equal', 16);
+    });
+  });
+
   describe('_generateWalletPassword()', () => {
     it('should generate a password and store it', async () => {
       await auth._generateWalletPassword();

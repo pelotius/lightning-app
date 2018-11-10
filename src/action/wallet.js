@@ -274,6 +274,16 @@ class WalletAction {
   }
 
   /**
+   * Initialize the seed view by resetting index values and then navigating to
+   * the view.
+   * @return {undefined}
+   */
+  initSeed() {
+    this._store.wallet.seedIndex = 0;
+    this._nav.goSeed();
+  }
+
+  /**
    * Initialize the restore wallet view by resetting input values and then
    * navigating to the view.
    * @return {undefined}

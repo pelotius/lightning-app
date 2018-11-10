@@ -308,6 +308,15 @@ describe('Action Wallet Unit Tests', () => {
     });
   });
 
+  describe('initSeed()', () => {
+    it('should clear attributes and navigate to view', () => {
+      store.wallet.seedIndex = 42;
+      wallet.initSeed();
+      expect(store.wallet.seedIndex, 'to equal', 0);
+      expect(nav.goSeed, 'was called once');
+    });
+  });
+
   describe('initRestoreWallet()', () => {
     it('should clear attributes and navigate to view', () => {
       store.wallet.restoreIndex = 42;
