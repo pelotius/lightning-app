@@ -101,9 +101,7 @@ sinon.stub(auth, '_generateWalletPassword');
 storiesOf('Screens', module)
   .add('Welcome', () => <Welcome />)
   .add('Loader - First Time', () => <Loader />)
-  .add('Select Seed', () => (
-    <SelectSeed store={store} wallet={wallet} nav={nav} />
-  ))
+  .add('Select Seed', () => <SelectSeed store={store} wallet={wallet} />)
   .add('Seed', () => <Seed store={store} wallet={wallet} />)
   .add('Seed (Mobile)', () => <SeedMobile store={store} auth={auth} />)
   .add('Seed Verify', () => (

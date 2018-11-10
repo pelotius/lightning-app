@@ -132,6 +132,32 @@ store.channelBalanceSatoshis = 59876000;
 store.settings.exchangeRate.usd = 0.00016341;
 store.settings.exchangeRate.eur = 0.0001896;
 store.settings.exchangeRate.gbp = 0.00021405;
+store.seedMnemonic = [
+  'empower',
+  'neglect',
+  'experience',
+  'elevator',
+  'entropy',
+  'future',
+  'trust',
+  'swift',
+  'pluck',
+  'easy',
+  'kite',
+  'measure',
+  'engage',
+  'settle',
+  'dog',
+  'manager',
+  'tool',
+  'fan',
+  'neglect',
+  'conduct',
+  'blouse',
+  'stone',
+  'quit',
+  'cashew',
+];
 store.logs = [
   '[14:00:24.995] [info] Using lnd in path lnd',
   'Checking for update',

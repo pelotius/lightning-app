@@ -9,6 +9,7 @@ import FontLoader from './component/font-loader';
 import WelcomeView from '../src/view/welcome';
 import LoaderView from '../src/view/loader';
 import SelectSeedView from '../src/view/select-seed';
+import SeedView from '../src/view/seed-mobile';
 import SetPinView from '../src/view/set-pin-mobile';
 import SetPinConfirmView from '../src/view/set-pin-confirm-mobile';
 import SeedSuccessView from '../src/view/seed-success';
@@ -50,9 +51,9 @@ const Welcome = () => <WelcomeView />;
 
 const Loader = () => <LoaderView />;
 
-const SelectSeed = () => (
-  <SelectSeedView store={store} wallet={wallet} nav={nav} />
-);
+const SelectSeed = () => <SelectSeedView store={store} wallet={wallet} />;
+
+const Seed = () => <SeedView store={store} auth={auth} />;
 
 const SetPassword = () => <SetPinView store={store} auth={auth} nav={nav} />;
 
@@ -129,6 +130,7 @@ const MainStack = createStackNavigator(
     Welcome,
     Loader,
     SelectSeed,
+    Seed,
     SetPassword,
     SetPasswordConfirm,
     SeedSuccess,
