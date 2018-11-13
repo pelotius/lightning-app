@@ -319,9 +319,11 @@ describe('Action Wallet Unit Tests', () => {
   });
 
   describe('setRestoreSeed()', () => {
-    it('should clear attributes', () => {
+    it('should clear attributes and set autofocus false', () => {
+      store.wallet.autofocusRestoreInput = true;
       wallet.setRestoreSeed({ word: 'foo', index: 1 });
       expect(store.wallet.restoreSeed[1], 'to equal', 'foo');
+      expect(store.wallet.autofocusRestoreInput, 'to be', false);
     });
   });
 
@@ -333,10 +335,12 @@ describe('Action Wallet Unit Tests', () => {
       expect(store.wallet.restoreIndex, 'to equal', 2);
     });
 
-    it('should decrement restoreIndex if greater than 2', async () => {
+    it('should decrement restoreIndex if > 2 and reset autofocus', async () => {
       store.wallet.restoreIndex = 3;
+      store.wallet.autofocusRestoreInput = false;
       wallet.initPrevRestorePage();
       expect(nav.goSelectSeed, 'was not called');
+      expect(store.wallet.autofocusRestoreInput, 'to be', true);
       expect(store.wallet.restoreIndex, 'to equal', 0);
     });
   });
@@ -349,10 +353,12 @@ describe('Action Wallet Unit Tests', () => {
       expect(store.wallet.restoreIndex, 'to equal', 21);
     });
 
-    it('should increment restoreIndex if less than 21', async () => {
+    it('should increment restoreIndex if < 21 and reset autofocus', async () => {
       store.wallet.restoreIndex = 18;
+      store.wallet.autofocusRestoreInput = false;
       wallet.initNextRestorePage();
       expect(nav.goRestorePassword, 'was not called');
+      expect(store.wallet.autofocusRestoreInput, 'to be', true);
       expect(store.wallet.restoreIndex, 'to equal', 21);
     });
   });

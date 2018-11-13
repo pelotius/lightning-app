@@ -53,6 +53,7 @@ class WalletAction {
    * @param {number} options.index The seed index
    */
   setRestoreSeed({ word, index }) {
+    this._store.wallet.autofocusRestoreInput = false;
     this._store.wallet.restoreSeed[index] = word;
   }
 
@@ -291,6 +292,7 @@ class WalletAction {
    */
   initNextRestorePage() {
     if (this._store.wallet.restoreIndex < 21) {
+      this._store.wallet.autofocusRestoreInput = true;
       this._store.wallet.restoreIndex += 3;
     } else {
       this._nav.goRestorePassword();
@@ -304,6 +306,7 @@ class WalletAction {
    */
   initPrevRestorePage() {
     if (this._store.wallet.restoreIndex >= 3) {
+      this._store.wallet.autofocusRestoreInput = true;
       this._store.wallet.restoreIndex -= 3;
     } else {
       this._nav.goSelectSeed();
