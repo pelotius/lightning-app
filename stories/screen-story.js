@@ -27,6 +27,7 @@ import CLI from '../src/view/cli';
 import Notification from '../src/view/notification';
 import TransactionDetail from '../src/view/transaction-detail';
 import Channel from '../src/view/channel';
+import ChannelMobile from '../src/view/channel-mobile';
 import ChannelDetail from '../src/view/channel-detail';
 import ChannelDelete from '../src/view/channel-delete';
 import ChannelCreate from '../src/view/channel-create';
@@ -191,6 +192,9 @@ storiesOf('Screens', module)
     <TransactionDetail store={store} nav={nav} />
   ))
   .add('Channels', () => <Channel store={store} channel={channel} nav={nav} />)
+  .add('Channels (Mobile)', () => (
+    <ChannelMobile store={store} channel={channel} nav={nav} />
+  ))
   .add('Channels (Opening)', () => (
     <Channel store={{ computedChannels: [] }} channel={channel} nav={nav} />
   ))
